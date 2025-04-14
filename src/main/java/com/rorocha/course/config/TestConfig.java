@@ -2,10 +2,12 @@ package com.rorocha.course.config;
 
 import com.rorocha.course.entities.Category;
 import com.rorocha.course.entities.Order;
+import com.rorocha.course.entities.Product;
 import com.rorocha.course.entities.User;
 import com.rorocha.course.entities.enums.OrderStatus;
 import com.rorocha.course.repositories.CategoryRepository;
 import com.rorocha.course.repositories.OrderRepository;
+import com.rorocha.course.repositories.ProductRepository;
 import com.rorocha.course.repositories.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
@@ -27,12 +29,21 @@ public class TestConfig implements CommandLineRunner {
     @Autowired
     private CategoryRepository categoryRepository;
 
+    @Autowired
+    private ProductRepository productRepository;
+
     @Override
     public void run(String... args) throws Exception {
 
         Category cat1 = new Category(null, "Electronics");
         Category cat2 = new Category(null, "Books");
         Category cat3 = new Category(null, "Computers");
+
+        Product p1 = new Product(null,"The lord of RIngs","Lorem ipsum asadqjdjqd",90.5, "");
+        Product p2 = new Product(null,"Smart TV","Lorem ipsum asadqjdjqd",2190.0, "");
+        Product p3 = new Product(null,"Mackbook Pro","Lorem ipsum asadqjdjqd",1250.0, "");
+        Product p4 = new Product(null,"PC Gamer","Lorem ipsum asadqjdjqd",1200.0, "");
+        Product p5 = new Product(null,"Rails for Dummies","Lorem ipsum asadqjdjqd",100.99, "");
 
         User u1 = new User(null,"Maria brown","maria@gmail.com","199999999","123456");
         User u2 = new User(null,"Alex Green","alex@gmail.com","2133333333","123456");
@@ -44,6 +55,7 @@ public class TestConfig implements CommandLineRunner {
         userRepository.saveAll(Arrays.asList(u1,u2));
         orderRepository.saveAll(Arrays.asList(o1,o2,o3));
         categoryRepository.saveAll(Arrays.asList(cat1,cat2,cat3));
+        productRepository.saveAll(Arrays.asList(p1,p2,p3,p4,p5));
 
 
 
